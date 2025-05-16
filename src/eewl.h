@@ -202,6 +202,27 @@ struct EEWL {
     return 1;
 
   }
+  // Funktion zum Vergleichen von Daten
+  template <typename T> bool areDataEqual(const T &data1, const T &data2) {
+    return memcmp(&data1, &data2, sizeof(T)) == 0;
+  }
+
+  // Funktion zum Aktualisieren der Systemparameter
+  template <typename T> void updateSystemParameters(T &data) {
+    T currentData; // Variable zum Speichern der aktuellen Daten
+
+    // Aktuelle Daten abrufen
+    if (get(currentData)) {
+      // Überprüfen, ob sich die Daten geändert haben
+      if (!areDataEqual(currentData, data)) {
+        // Daten haben sich geändert, also speichern wir die neuen Daten
+        put(data);
+      }
+    } else {
+      // Wenn keine gültigen Daten vorhanden sind, speichern wir die neuen Daten
+      put(data);
+    }
+  }
 
 
   // write data to EEPROM
