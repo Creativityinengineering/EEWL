@@ -75,7 +75,7 @@ struct EEWL {
   // member functions
 
   // class constructor
-  template <typename T> EEWL(T &data, int blk_num_, int start_addr_) {
+  template <typename T> EEWL(T &data, int blk_num_, int start_addr_) { //start_addr starts at 0 now
 
     (void)data;
 
