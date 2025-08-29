@@ -130,9 +130,7 @@ bool hasSystemParametersChanged(const SystemParameters& oldParams, const SystemP
          (oldParams.byte5 != newParams.byte5);
 }
 
-uint16_t combineBytes(byte lowByte, byte highByte) {
-  return (static_cast<uint16_t>(highByte) << 8) | static_cast<uint16_t>(lowByte);
-}
+
 
 void printEEPROMHex(int startAddress, int numBytes) {
   for (int i = 0; i < numBytes; i++) {
